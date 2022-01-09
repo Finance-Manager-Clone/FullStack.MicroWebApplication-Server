@@ -1,5 +1,5 @@
 
-## [Zip-Banking Heroku Link](https://zip-banking-clone.herokuapp.com/)
+## [Zip-Banking Heroku Link](https://zip-code-bank.herokuapp.com/)
 # Micro Web Application - Server
 * **Objective** - to create an implementation of a small web service
 * **Purpose** - to demonstrate the construction of a full-stacked web-application
