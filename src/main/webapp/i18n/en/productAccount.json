@@ -1,0 +1,28 @@
+{
+  "myApp": {
+    "productAccount": {
+      "home": {
+        "title": "Product Accounts",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Product Account",
+        "createOrEditLabel": "Create or edit a Product Account",
+        "notFound": "No Product Accounts found"
+      },
+      "created": "A new Product Account is created with identifier {{ param }}",
+      "updated": "A Product Account is updated with identifier {{ param }}",
+      "deleted": "A Product Account is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Product Account {{ id }}?"
+      },
+      "detail": {
+        "title": "Product Account"
+      },
+      "id": "ID",
+      "accountNumber": "Account Number",
+      "accounType": "Accoun Type",
+      "openingDate": "Opening Date",
+      "balance": "Balance",
+      "accountDetails": "Account Details"
+    }
+  }
+}

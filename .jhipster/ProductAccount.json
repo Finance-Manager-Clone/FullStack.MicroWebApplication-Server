@@ -1,0 +1,45 @@
+{
+  "name": "ProductAccount",
+  "fields": [
+    {
+      "fieldName": "accountNumber",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique"]
+    },
+    {
+      "fieldName": "accounType",
+      "fieldType": "AccountType",
+      "fieldValues": "Checking,Savings",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "openingDate",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "balance",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["min"],
+      "fieldValidateRulesMin": "0"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "accountDetails",
+      "otherEntityRelationshipName": "accounts",
+      "relationshipName": "accountDetails"
+    }
+  ],
+  "entityTableName": "product_account",
+  "dto": "mapstruct",
+  "pagination": "infinite-scroll",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20220111223229"
+}

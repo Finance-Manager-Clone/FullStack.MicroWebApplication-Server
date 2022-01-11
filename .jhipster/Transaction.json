@@ -1,0 +1,64 @@
+{
+  "name": "Transaction",
+  "fields": [
+    {
+      "fieldName": "transactionId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["unique", "required"]
+    },
+    {
+      "fieldName": "transactionType",
+      "fieldType": "TransactionType",
+      "fieldValues": "Debit,Credit",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "amount",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "time",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "currency",
+      "fieldType": "Currency",
+      "fieldValues": "USD"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "category",
+      "otherEntityRelationshipName": "transaction",
+      "relationshipName": "category",
+      "otherEntityField": "categoryName"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "productAccount",
+      "otherEntityRelationshipName": "transaction",
+      "relationshipName": "from",
+      "otherEntityField": "accountNumber"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "productAccount",
+      "otherEntityRelationshipName": "transaction",
+      "relationshipName": "to",
+      "otherEntityField": "accountNumber"
+    }
+  ],
+  "entityTableName": "transaction",
+  "dto": "mapstruct",
+  "pagination": "infinite-scroll",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20220111223228"
+}

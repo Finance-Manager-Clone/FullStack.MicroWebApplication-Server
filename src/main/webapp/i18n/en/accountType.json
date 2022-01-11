@@ -1,0 +1,9 @@
+{
+  "myApp": {
+    "AccountType": {
+      "null": "",
+      "Checking": "Checking",
+      "Savings": "Savings"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "myApp": {
+    "TransactionType": {
+      "null": "",
+      "Debit": "Debit",
+      "Credit": "Credit"
+    }
+  }
+}

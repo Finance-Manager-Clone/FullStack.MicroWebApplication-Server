@@ -1,0 +1,31 @@
+{
+  "myApp": {
+    "accountDetails": {
+      "home": {
+        "title": "Account Details",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Account Details",
+        "createOrEditLabel": "Create or edit a Account Details",
+        "notFound": "No Account Details found"
+      },
+      "created": "A new Account Details is created with identifier {{ param }}",
+      "updated": "A Account Details is updated with identifier {{ param }}",
+      "deleted": "A Account Details is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Account Details {{ id }}?"
+      },
+      "detail": {
+        "title": "Account Details"
+      },
+      "id": "ID",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "phoneNumber": "Phone Number",
+      "email": "Email",
+      "address": "Address",
+      "city": "City",
+      "country": "Country",
+      "accounts": "Accounts"
+    }
+  }
+}
