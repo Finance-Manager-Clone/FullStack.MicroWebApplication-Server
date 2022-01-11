@@ -1,0 +1,87 @@
+DEFAULT_MIN = 0
+enum Currency{
+    USD
+}
+
+entity AccountDetails{
+    firstName String required,
+    lastName String required,
+    phoneNumber String required minlength(10) maxlength(10),
+    email String required unique pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/),
+    address String required,
+    city String required,
+    country String required
+}
+
+entity Transaction{
+    transactionId Long unique required,
+    transactionType TransactionType required,
+    amount BigDecimal required,
+    time ZonedDateTime required,
+    currency Currency
+}
+
+entity ProductAccount{
+    accountNumber String required unique,
+    accounType AccountType required,
+    openingDate ZonedDateTime required,
+    balance BigDecimal min(DEFAULT_MIN)
+}
+
+enum AccountType {
+ Checking, Savings
+}
+
+enum TransactionType{
+Debit, Credit
+}
+
+
+entity Category{
+categoryName String required
+}
+
+relationship ManyToOne{
+Transaction{category(categoryName)} to Category
+}
+
+relationship OneToMany {
+    AccountDetails{accounts(accountNumber)} to ProductAccount
+}
+
+relationship ManyToOne {
+    Transaction{from(accountNumber)} to ProductAccount
+    
+}
+
+relationship ManyToOne {
+    Transaction{to(accountNumber)} to ProductAccount
+    
+}
+
+
+// Set pagination options
+paginate ProductAccount, Transaction with infinite-scroll
+paginate AccountDetails with pagination
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+  
+    
+    
+  
+
+    
+  
+
+  
+
+
+
+
+
+ 
+    

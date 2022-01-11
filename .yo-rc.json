@@ -45,6 +45,8 @@
     "enableGradleEnterprise": false,
     "herokuAppName": "zip-code-bank",
     "herokuDeployType": "git",
-    "herokuJavaVersion": "11"
+    "herokuJavaVersion": "11",
+    "entities": ["AccountDetails", "Transaction", "ProductAccount", "Category"],
+    "lastLiquibaseTimestamp": 1641940350000
   }
 }
