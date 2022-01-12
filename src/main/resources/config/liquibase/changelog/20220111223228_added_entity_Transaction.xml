@@ -14,9 +14,6 @@
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="transaction_id" type="bigint">
-                <constraints nullable="false" unique="true" uniqueConstraintName="ux_transaction__transaction_id" />
-            </column>
             <column name="transaction_type" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
@@ -60,7 +57,6 @@
                   tableName="transaction"
                   usePreparedStatements="true">
             <column name="id" type="numeric"/>
-            <column name="transaction_id" type="numeric"/>
             <column name="transaction_type" type="string"/>
             <column name="amount" type="numeric"/>
             <column name="time" type="date"/>
