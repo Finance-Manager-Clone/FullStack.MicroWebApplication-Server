@@ -6,7 +6,6 @@ import { Currency } from 'app/shared/model/enumerations/currency.model';
 
 export interface ITransaction {
   id?: number;
-  transactionId?: number;
   transactionType?: TransactionType;
   amount?: number;
   time?: string;

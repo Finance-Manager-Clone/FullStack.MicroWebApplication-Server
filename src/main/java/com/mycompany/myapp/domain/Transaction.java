@@ -28,10 +28,6 @@ public class Transaction implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "transaction_id", nullable = false, unique = true)
-    private Long transactionId;
-
-    @NotNull
     @Enumerated(EnumType.STRING)
     @Column(name = "transaction_type", nullable = false)
     private TransactionType transactionType;
@@ -72,19 +68,6 @@ public class Transaction implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getTransactionId() {
-        return this.transactionId;
-    }
-
-    public Transaction transactionId(Long transactionId) {
-        this.setTransactionId(transactionId);
-        return this;
-    }
-
-    public void setTransactionId(Long transactionId) {
-        this.transactionId = transactionId;
     }
 
     public TransactionType getTransactionType() {
@@ -202,7 +185,6 @@ public class Transaction implements Serializable {
     public String toString() {
         return "Transaction{" +
             "id=" + getId() +
-            ", transactionId=" + getTransactionId() +
             ", transactionType='" + getTransactionType() + "'" +
             ", amount=" + getAmount() +
             ", time='" + getTime() + "'" +

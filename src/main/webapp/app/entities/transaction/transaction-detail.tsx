@@ -30,12 +30,6 @@ export const TransactionDetail = (props: RouteComponentProps<{ id: string }>) =>
           </dt>
           <dd>{transactionEntity.id}</dd>
           <dt>
-            <span id="transactionId">
-              <Translate contentKey="myApp.transaction.transactionId">Transaction Id</Translate>
-            </span>
-          </dt>
-          <dd>{transactionEntity.transactionId}</dd>
-          <dt>
             <span id="transactionType">
               <Translate contentKey="myApp.transaction.transactionType">Transaction Type</Translate>
             </span>

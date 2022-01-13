@@ -16,9 +16,6 @@ public class TransactionDTO implements Serializable {
     private Long id;
 
     @NotNull
-    private Long transactionId;
-
-    @NotNull
     private TransactionType transactionType;
 
     @NotNull
@@ -41,14 +38,6 @@ public class TransactionDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getTransactionId() {
-        return transactionId;
-    }
-
-    public void setTransactionId(Long transactionId) {
-        this.transactionId = transactionId;
     }
 
     public TransactionType getTransactionType() {
@@ -133,7 +122,6 @@ public class TransactionDTO implements Serializable {
     public String toString() {
         return "TransactionDTO{" +
             "id=" + getId() +
-            ", transactionId=" + getTransactionId() +
             ", transactionType='" + getTransactionType() + "'" +
             ", amount=" + getAmount() +
             ", time='" + getTime() + "'" +

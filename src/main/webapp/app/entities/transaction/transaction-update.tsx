@@ -107,17 +107,6 @@ export const TransactionUpdate = (props: RouteComponentProps<{ id: string }>) =>
                 />
               ) : null}
               <ValidatedField
-                label={translate('myApp.transaction.transactionId')}
-                id="transaction-transactionId"
-                name="transactionId"
-                data-cy="transactionId"
-                type="text"
-                validate={{
-                  required: { value: true, message: translate('entity.validation.required') },
-                  validate: v => isNumber(v) || translate('entity.validation.number'),
-                }}
-              />
-              <ValidatedField
                 label={translate('myApp.transaction.transactionType')}
                 id="transaction-transactionType"
                 name="transactionType"

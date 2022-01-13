@@ -2,11 +2,6 @@
   "name": "Transaction",
   "fields": [
     {
-      "fieldName": "transactionId",
-      "fieldType": "Long",
-      "fieldValidateRules": ["unique", "required"]
-    },
-    {
       "fieldName": "transactionType",
       "fieldType": "TransactionType",
       "fieldValues": "Debit,Credit",
