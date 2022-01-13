@@ -147,7 +147,7 @@ public class TransactionResource {
     @GetMapping("/transactions")
     public ResponseEntity<List<TransactionDTO>> getAllTransactions(@org.springdoc.api.annotations.ParameterObject Pageable pageable) {
         log.debug("REST request to get a page of Transactions");
-        Page<TransactionDTO> page = transactionService.findAll(pageable);
+        Page<TransactionDTO> page = transactionService.findByUserIsCurrentUser(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }

@@ -44,6 +44,14 @@
       "otherEntityRelationshipName": "transaction",
       "relationshipName": "to",
       "otherEntityField": "accountNumber"
+    },
+    {
+      "relationshipName": "user",
+      "otherEntityName": "user",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "login",
+      "ownerSide": true,
+      "otherEntityRelationshipName": "transaction"
     }
   ],
   "entityTableName": "transaction",

@@ -24,7 +24,8 @@
       "currency": "Currency",
       "category": "Category",
       "from": "From",
-      "to": "To"
+      "to": "To",
+      "user": "User"
     }
   }
 }

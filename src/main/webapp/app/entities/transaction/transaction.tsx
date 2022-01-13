@@ -144,6 +144,9 @@ export const Transaction = (props: RouteComponentProps<{ url: string }>) => {
                   <th>
                     <Translate contentKey="myApp.transaction.to">To</Translate> <FontAwesomeIcon icon="sort" />
                   </th>
+                  <th>
+                    <Translate contentKey="myApp.transaction.user">User</Translate> <FontAwesomeIcon icon="sort" />
+                  </th>
                   <th />
                 </tr>
               </thead>
@@ -174,6 +177,7 @@ export const Transaction = (props: RouteComponentProps<{ url: string }>) => {
                       {transaction.from ? <Link to={`product-account/${transaction.from.id}`}>{transaction.from.accountNumber}</Link> : ''}
                     </td>
                     <td>{transaction.to ? <Link to={`product-account/${transaction.to.id}`}>{transaction.to.accountNumber}</Link> : ''}</td>
+                    <td>{transaction.user ? transaction.user.login : ''}</td>
                     <td className="text-end">
                       <div className="btn-group flex-btn-group-container">
                         <Button tag={Link} to={`${match.url}/${transaction.id}`} color="info" size="sm" data-cy="entityDetailsButton">

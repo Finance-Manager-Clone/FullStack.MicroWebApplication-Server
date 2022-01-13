@@ -8,6 +8,8 @@ import { ICategory } from 'app/shared/model/category.model';
 import { getEntities as getCategories } from 'app/entities/category/category.reducer';
 import { IProductAccount } from 'app/shared/model/product-account.model';
 import { getEntities as getProductAccounts } from 'app/entities/product-account/product-account.reducer';
+import { IUser } from 'app/shared/model/user.model';
+import { getUsers } from 'app/modules/administration/user-management/user-management.reducer';
 import { getEntity, updateEntity, createEntity, reset } from './transaction.reducer';
 import { ITransaction } from 'app/shared/model/transaction.model';
 import { convertDateTimeFromServer, convertDateTimeToServer, displayDefaultDateTime } from 'app/shared/util/date-utils';
@@ -23,6 +25,7 @@ export const TransactionUpdate = (props: RouteComponentProps<{ id: string }>) =>
 
   const categories = useAppSelector(state => state.category.entities);
   const productAccounts = useAppSelector(state => state.productAccount.entities);
+  const users = useAppSelector(state => state.userManagement.users);
   const transactionEntity = useAppSelector(state => state.transaction.entity);
   const loading = useAppSelector(state => state.transaction.loading);
   const updating = useAppSelector(state => state.transaction.updating);
@@ -40,6 +43,7 @@ export const TransactionUpdate = (props: RouteComponentProps<{ id: string }>) =>
 
     dispatch(getCategories({}));
     dispatch(getProductAccounts({}));
+    dispatch(getUsers({}));
   }, []);
 
   useEffect(() => {
@@ -57,6 +61,7 @@ export const TransactionUpdate = (props: RouteComponentProps<{ id: string }>) =>
       category: categories.find(it => it.id.toString() === values.category.toString()),
       from: productAccounts.find(it => it.id.toString() === values.from.toString()),
       to: productAccounts.find(it => it.id.toString() === values.to.toString()),
+      user: users.find(it => it.id.toString() === values.user.toString()),
     };
 
     if (isNew) {
@@ -79,6 +84,7 @@ export const TransactionUpdate = (props: RouteComponentProps<{ id: string }>) =>
           category: transactionEntity?.category?.id,
           from: transactionEntity?.from?.id,
           to: transactionEntity?.to?.id,
+          user: transactionEntity?.user?.id,
         };
 
   return (
@@ -186,6 +192,16 @@ export const TransactionUpdate = (props: RouteComponentProps<{ id: string }>) =>
                   ? productAccounts.map(otherEntity => (
                       <option value={otherEntity.id} key={otherEntity.id}>
                         {otherEntity.accountNumber}
+                      </option>
+                    ))
+                  : null}
+              </ValidatedField>
+              <ValidatedField id="transaction-user" name="user" data-cy="user" label={translate('myApp.transaction.user')} type="select">
+                <option value="" key="0" />
+                {users
+                  ? users.map(otherEntity => (
+                      <option value={otherEntity.id} key={otherEntity.id}>
+                        {otherEntity.login}
                       </option>
                     ))
                   : null}

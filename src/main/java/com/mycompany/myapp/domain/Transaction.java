@@ -55,6 +55,9 @@ public class Transaction implements Serializable {
     @JsonIgnoreProperties(value = { "accountDetails" }, allowSetters = true)
     private ProductAccount to;
 
+    @ManyToOne
+    private User user;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public Long getId() {
@@ -158,6 +161,19 @@ public class Transaction implements Serializable {
 
     public Transaction to(ProductAccount productAccount) {
         this.setTo(productAccount);
+        return this;
+    }
+
+    public User getUser() {
+        return this.user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Transaction user(User user) {
+        this.setUser(user);
         return this;
     }
 

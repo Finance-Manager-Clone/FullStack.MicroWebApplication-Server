@@ -65,6 +65,10 @@ export const TransactionDetail = (props: RouteComponentProps<{ id: string }>) =>
             <Translate contentKey="myApp.transaction.to">To</Translate>
           </dt>
           <dd>{transactionEntity.to ? transactionEntity.to.accountNumber : ''}</dd>
+          <dt>
+            <Translate contentKey="myApp.transaction.user">User</Translate>
+          </dt>
+          <dd>{transactionEntity.user ? transactionEntity.user.login : ''}</dd>
         </dl>
         <Button tag={Link} to="/transaction" replace color="info" data-cy="entityDetailsBackButton">
           <FontAwesomeIcon icon="arrow-left" />{' '}

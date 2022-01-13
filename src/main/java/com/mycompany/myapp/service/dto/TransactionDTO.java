@@ -32,6 +32,8 @@ public class TransactionDTO implements Serializable {
 
     private ProductAccountDTO to;
 
+    private UserDTO user;
+
     public Long getId() {
         return id;
     }
@@ -96,6 +98,14 @@ public class TransactionDTO implements Serializable {
         this.to = to;
     }
 
+    public UserDTO getUser() {
+        return user;
+    }
+
+    public void setUser(UserDTO user) {
+        this.user = user;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -129,6 +139,7 @@ public class TransactionDTO implements Serializable {
             ", category=" + getCategory() +
             ", from=" + getFrom() +
             ", to=" + getTo() +
+            ", user=" + getUser() +
             "}";
     }
 }
