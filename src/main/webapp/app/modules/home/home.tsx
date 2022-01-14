@@ -16,7 +16,7 @@ export const Home = () => {
       <Col md="3" className="pad">
         <span className = "graph"></span>
       </Col>
-      <Col md="9">
+      <Col className = "mainContent" md="9">
         <h2>
           <Translate contentKey="home.title">Welcome, Zip Bankers</Translate>
         </h2>
