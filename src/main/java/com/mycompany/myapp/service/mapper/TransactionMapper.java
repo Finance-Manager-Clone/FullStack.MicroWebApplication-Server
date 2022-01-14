@@ -14,7 +14,4 @@ public interface TransactionMapper extends EntityMapper<TransactionDTO, Transact
     @Mapping(target = "to", source = "to", qualifiedByName = "accountNumber")
     @Mapping(target = "user", source = "user", qualifiedByName = "login")
     TransactionDTO toDto(Transaction s);
-
-
-
 }

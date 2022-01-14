@@ -25,7 +25,8 @@
       "address": "Address",
       "city": "City",
       "country": "Country",
-      "accounts": "Accounts"
+      "accounts": "Accounts",
+      "user": "User"
     }
   }
 }

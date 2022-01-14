@@ -148,7 +148,7 @@ public class AccountDetailsResource {
     @GetMapping("/account-details")
     public ResponseEntity<List<AccountDetailsDTO>> getAllAccountDetails(@org.springdoc.api.annotations.ParameterObject Pageable pageable) {
         log.debug("REST request to get a page of AccountDetails");
-        Page<AccountDetailsDTO> page = accountDetailsService.findAll(pageable);
+        Page<AccountDetailsDTO> page = accountDetailsService.findByUserIsCurrentUser(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }

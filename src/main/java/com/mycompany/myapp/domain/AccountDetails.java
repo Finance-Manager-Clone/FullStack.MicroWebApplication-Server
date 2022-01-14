@@ -60,6 +60,10 @@ public class AccountDetails implements Serializable {
     @JsonIgnoreProperties(value = { "accountDetails" }, allowSetters = true)
     private Set<ProductAccount> accounts = new HashSet<>();
 
+    @OneToOne
+    @JoinColumn(unique = true)
+    private User user;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public Long getId() {
@@ -194,6 +198,19 @@ public class AccountDetails implements Serializable {
     public AccountDetails removeAccounts(ProductAccount productAccount) {
         this.accounts.remove(productAccount);
         productAccount.setAccountDetails(null);
+        return this;
+    }
+
+    public User getUser() {
+        return this.user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public AccountDetails user(User user) {
+        this.setUser(user);
         return this;
     }
 

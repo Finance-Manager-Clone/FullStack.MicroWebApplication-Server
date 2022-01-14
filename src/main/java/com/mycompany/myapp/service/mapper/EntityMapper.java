@@ -1,8 +1,6 @@
 package com.mycompany.myapp.service.mapper;
 
 import java.util.List;
-
-import com.mycompany.myapp.service.dto.TransactionDTO;
 import org.mapstruct.BeanMapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.Named;
@@ -27,6 +25,4 @@ public interface EntityMapper<D, E> {
     @Named("partialUpdate")
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     void partialUpdate(@MappingTarget E entity, D dto);
-
-
 }
