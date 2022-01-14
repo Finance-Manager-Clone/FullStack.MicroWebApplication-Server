@@ -1,10 +1,28 @@
 /* ==========================================================================
 Main page styles
 ========================================================================== */
-.hipster {
+body {
+  background-color: rgb(35, 71, 78);
+}
+
+h2 {
+  color: #000;
+}
+
+.graph {
   display: inline-block;
-  width: 100%;
+  width: 110%;
   height: 497px;
-  background: url('../../../content/images/jhipster_family_member_1.svg') no-repeat center top;
+  margin-top: 100px;
+  //background: url('../../../content/images/tempGraph.png') no-repeat center top;
   background-size: contain;
+}
+
+.backgroundArea {
+  background: url('../../../content/images/homeBackground.jpeg') no-repeat top;
+  background-size: cover;
+}
+
+.Alert {
+  color: #0fa69e;
 }

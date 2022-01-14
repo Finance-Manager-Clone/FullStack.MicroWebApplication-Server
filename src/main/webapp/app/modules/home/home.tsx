@@ -11,28 +11,29 @@ export const Home = () => {
   const account = useAppSelector(state => state.authentication.account);
 
   return (
+    <div className = "backgroundArea">
     <Row>
       <Col md="3" className="pad">
-        <span className="hipster rounded" />
+        <span className = "graph"></span>
       </Col>
       <Col md="9">
         <h2>
-          <Translate contentKey="home.title">Welcome, Java Hipster!</Translate>
+          <Translate contentKey="home.title">Welcome, Zip Bankers</Translate>
         </h2>
         <p className="lead">
-          <Translate contentKey="home.subtitle">This is your homepage</Translate>
+          <Translate contentKey="home.subtitle"></Translate>
         </p>
         {account?.login ? (
           <div>
             <Alert color="success">
               <Translate contentKey="home.logged.message" interpolate={{ username: account.login }}>
-                You are logged in as user {account.login}.
+                {account.login} is logged in.
               </Translate>
             </Alert>
           </div>
         ) : (
-          <div>
-            <Alert color="warning">
+          <div className = "signInArea">
+            <Alert>
               <Translate contentKey="global.messages.info.authenticated.prefix">If you want to </Translate>
 
               <Link to="/login" className="alert-link">
@@ -45,10 +46,10 @@ export const Home = () => {
               </Translate>
             </Alert>
 
-            <Alert color="warning">
+            <Alert>
               <Translate contentKey="global.messages.info.register.noaccount">You do not have an account yet?</Translate>&nbsp;
               <Link to="/account/register" className="alert-link">
-                <Translate contentKey="global.messages.info.register.link">Register a new account</Translate>
+                <Translate contentKey="global.messages.info.register.link">Create new account</Translate>
               </Link>
             </Alert>
           </div>
@@ -94,6 +95,7 @@ export const Home = () => {
         </p>
       </Col>
     </Row>
+    </div>
   );
 };
 
