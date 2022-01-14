@@ -44,7 +44,7 @@ public class ProductAccount implements Serializable {
     private BigDecimal balance;
 
     @ManyToOne
-    @JsonIgnoreProperties(value = { "accounts" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "accounts", "user" }, allowSetters = true)
     private AccountDetails accountDetails;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

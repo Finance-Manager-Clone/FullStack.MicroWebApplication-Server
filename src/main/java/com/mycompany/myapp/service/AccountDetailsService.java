@@ -31,7 +31,7 @@ public interface AccountDetailsService {
      * @param pageable the pagination information.
      * @return the list of entities.
      */
-    Page<AccountDetailsDTO> findAll(Pageable pageable);
+    Page<AccountDetailsDTO> findByUserIsCurrentUser(Pageable pageable);
 
     /**
      * Get the "id" accountDetails.

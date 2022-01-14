@@ -1,6 +1,7 @@
 {
   "home": {
-    "title": "Welcome, Zip Bankers",
+
+    "title": "Welcome, ZipBanker!",
     "subtitle": "",
     "logged": {
       "message": "\"{{username}}\" is logged in."

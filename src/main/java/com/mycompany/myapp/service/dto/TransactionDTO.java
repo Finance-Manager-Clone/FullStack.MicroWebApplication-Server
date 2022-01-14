@@ -16,9 +16,6 @@ public class TransactionDTO implements Serializable {
     private Long id;
 
     @NotNull
-    private Long transactionId;
-
-    @NotNull
     private TransactionType transactionType;
 
     @NotNull
@@ -35,20 +32,14 @@ public class TransactionDTO implements Serializable {
 
     private ProductAccountDTO to;
 
+    private UserDTO user;
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getTransactionId() {
-        return transactionId;
-    }
-
-    public void setTransactionId(Long transactionId) {
-        this.transactionId = transactionId;
     }
 
     public TransactionType getTransactionType() {
@@ -107,6 +98,14 @@ public class TransactionDTO implements Serializable {
         this.to = to;
     }
 
+    public UserDTO getUser() {
+        return user;
+    }
+
+    public void setUser(UserDTO user) {
+        this.user = user;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -133,7 +132,6 @@ public class TransactionDTO implements Serializable {
     public String toString() {
         return "TransactionDTO{" +
             "id=" + getId() +
-            ", transactionId=" + getTransactionId() +
             ", transactionType='" + getTransactionType() + "'" +
             ", amount=" + getAmount() +
             ", time='" + getTime() + "'" +
@@ -141,6 +139,7 @@ public class TransactionDTO implements Serializable {
             ", category=" + getCategory() +
             ", from=" + getFrom() +
             ", to=" + getTo() +
+            ", user=" + getUser() +
             "}";
     }
 }

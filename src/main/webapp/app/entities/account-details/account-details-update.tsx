@@ -4,6 +4,8 @@ import { Button, Row, Col, FormText } from 'reactstrap';
 import { isNumber, Translate, translate, ValidatedField, ValidatedForm } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import { IUser } from 'app/shared/model/user.model';
+import { getUsers } from 'app/modules/administration/user-management/user-management.reducer';
 import { getEntity, updateEntity, createEntity, reset } from './account-details.reducer';
 import { IAccountDetails } from 'app/shared/model/account-details.model';
 import { convertDateTimeFromServer, convertDateTimeToServer, displayDefaultDateTime } from 'app/shared/util/date-utils';
@@ -15,6 +17,7 @@ export const AccountDetailsUpdate = (props: RouteComponentProps<{ id: string }>)
 
   const [isNew] = useState(!props.match.params || !props.match.params.id);
 
+  const users = useAppSelector(state => state.userManagement.users);
   const accountDetailsEntity = useAppSelector(state => state.accountDetails.entity);
   const loading = useAppSelector(state => state.accountDetails.loading);
   const updating = useAppSelector(state => state.accountDetails.updating);
@@ -29,6 +32,8 @@ export const AccountDetailsUpdate = (props: RouteComponentProps<{ id: string }>)
     } else {
       dispatch(getEntity(props.match.params.id));
     }
+
+    dispatch(getUsers({}));
   }, []);
 
   useEffect(() => {
@@ -41,6 +46,7 @@ export const AccountDetailsUpdate = (props: RouteComponentProps<{ id: string }>)
     const entity = {
       ...accountDetailsEntity,
       ...values,
+      user: users.find(it => it.id.toString() === values.user.toString()),
     };
 
     if (isNew) {
@@ -55,6 +61,7 @@ export const AccountDetailsUpdate = (props: RouteComponentProps<{ id: string }>)
       ? {}
       : {
           ...accountDetailsEntity,
+          user: accountDetailsEntity?.user?.id,
         };
 
   return (
@@ -158,6 +165,22 @@ export const AccountDetailsUpdate = (props: RouteComponentProps<{ id: string }>)
                   required: { value: true, message: translate('entity.validation.required') },
                 }}
               />
+              <ValidatedField
+                id="account-details-user"
+                name="user"
+                data-cy="user"
+                label={translate('myApp.accountDetails.user')}
+                type="select"
+              >
+                <option value="" key="0" />
+                {users
+                  ? users.map(otherEntity => (
+                      <option value={otherEntity.id} key={otherEntity.id}>
+                        {otherEntity.login}
+                      </option>
+                    ))
+                  : null}
+              </ValidatedField>
               <Button tag={Link} id="cancel-save" data-cy="entityCreateCancelButton" to="/account-details" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />
                 &nbsp;

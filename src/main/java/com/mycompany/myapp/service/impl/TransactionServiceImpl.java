@@ -56,9 +56,9 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     @Transactional(readOnly = true)
-    public Page<TransactionDTO> findAll(Pageable pageable) {
+    public Page<TransactionDTO> findByUserIsCurrentUser(Pageable pageable) {
         log.debug("Request to get all Transactions");
-        return transactionRepository.findAll(pageable).map(transactionMapper::toDto);
+        return transactionRepository.findByUserIsCurrentUser(pageable).map(transactionMapper::toDto);
     }
 
     @Override

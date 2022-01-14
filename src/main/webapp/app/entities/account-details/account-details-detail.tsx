@@ -71,6 +71,10 @@ export const AccountDetailsDetail = (props: RouteComponentProps<{ id: string }>)
             </span>
           </dt>
           <dd>{accountDetailsEntity.country}</dd>
+          <dt>
+            <Translate contentKey="myApp.accountDetails.user">User</Translate>
+          </dt>
+          <dd>{accountDetailsEntity.user ? accountDetailsEntity.user.login : ''}</dd>
         </dl>
         <Button tag={Link} to="/account-details" replace color="info" data-cy="entityDetailsBackButton">
           <FontAwesomeIcon icon="arrow-left" />{' '}

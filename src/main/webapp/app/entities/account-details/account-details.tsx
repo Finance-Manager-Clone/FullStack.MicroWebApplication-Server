@@ -124,6 +124,9 @@ export const AccountDetails = (props: RouteComponentProps<{ url: string }>) => {
                 <th className="hand" onClick={sort('country')}>
                   <Translate contentKey="myApp.accountDetails.country">Country</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
+                <th>
+                  <Translate contentKey="myApp.accountDetails.user">User</Translate> <FontAwesomeIcon icon="sort" />
+                </th>
                 <th />
               </tr>
             </thead>
@@ -142,6 +145,7 @@ export const AccountDetails = (props: RouteComponentProps<{ url: string }>) => {
                   <td>{accountDetails.address}</td>
                   <td>{accountDetails.city}</td>
                   <td>{accountDetails.country}</td>
+                  <td>{accountDetails.user ? accountDetails.user.login : ''}</td>
                   <td className="text-end">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`${match.url}/${accountDetails.id}`} color="info" size="sm" data-cy="entityDetailsButton">

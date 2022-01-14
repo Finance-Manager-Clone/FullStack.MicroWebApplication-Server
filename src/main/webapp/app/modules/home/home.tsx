@@ -33,6 +33,18 @@ export const Home = () => {
           </div>
         ) : (
           <div className = "signInArea">
+            <form action="action_page.php" method="post">
+              <div className="container">
+                  <label htmlFor="uname"><b>Username</b></label>
+                  <input type="text" placeholder="Enter Username" name="uname" required></input>
+
+                  <label htmlFor="psw"><b>Password</b></label>
+                  <input type="password" placeholder="Enter Password" name="psw" required></input>
+
+                  <button type="submit">Login</button>
+                </div>
+            </form>
+
             <Alert>
               <Translate contentKey="global.messages.info.authenticated.prefix">If you want to </Translate>
 

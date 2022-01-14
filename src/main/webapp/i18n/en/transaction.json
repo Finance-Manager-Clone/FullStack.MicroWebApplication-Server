@@ -18,14 +18,14 @@
         "title": "Transaction"
       },
       "id": "ID",
-      "transactionId": "Transaction Id",
       "transactionType": "Transaction Type",
       "amount": "Amount",
       "time": "Time",
       "currency": "Currency",
       "category": "Category",
       "from": "From",
-      "to": "To"
+      "to": "To",
+      "user": "User"
     }
   }
 }

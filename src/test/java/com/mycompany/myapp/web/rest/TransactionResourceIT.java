@@ -40,9 +40,6 @@ import org.springframework.transaction.annotation.Transactional;
 @WithMockUser
 class TransactionResourceIT {
 
-    private static final Long DEFAULT_TRANSACTION_ID = 1L;
-    private static final Long UPDATED_TRANSACTION_ID = 2L;
-
     private static final TransactionType DEFAULT_TRANSACTION_TYPE = TransactionType.Debit;
     private static final TransactionType UPDATED_TRANSACTION_TYPE = TransactionType.Credit;
 
@@ -83,7 +80,6 @@ class TransactionResourceIT {
      */
     public static Transaction createEntity(EntityManager em) {
         Transaction transaction = new Transaction()
-            .transactionId(DEFAULT_TRANSACTION_ID)
             .transactionType(DEFAULT_TRANSACTION_TYPE)
             .amount(DEFAULT_AMOUNT)
             .time(DEFAULT_TIME)
@@ -99,7 +95,6 @@ class TransactionResourceIT {
      */
     public static Transaction createUpdatedEntity(EntityManager em) {
         Transaction transaction = new Transaction()
-            .transactionId(UPDATED_TRANSACTION_ID)
             .transactionType(UPDATED_TRANSACTION_TYPE)
             .amount(UPDATED_AMOUNT)
             .time(UPDATED_TIME)
@@ -128,7 +123,6 @@ class TransactionResourceIT {
         List<Transaction> transactionList = transactionRepository.findAll();
         assertThat(transactionList).hasSize(databaseSizeBeforeCreate + 1);
         Transaction testTransaction = transactionList.get(transactionList.size() - 1);
-        assertThat(testTransaction.getTransactionId()).isEqualTo(DEFAULT_TRANSACTION_ID);
         assertThat(testTransaction.getTransactionType()).isEqualTo(DEFAULT_TRANSACTION_TYPE);
         assertThat(testTransaction.getAmount()).isEqualByComparingTo(DEFAULT_AMOUNT);
         assertThat(testTransaction.getTime()).isEqualTo(DEFAULT_TIME);
@@ -154,26 +148,6 @@ class TransactionResourceIT {
         // Validate the Transaction in the database
         List<Transaction> transactionList = transactionRepository.findAll();
         assertThat(transactionList).hasSize(databaseSizeBeforeCreate);
-    }
-
-    @Test
-    @Transactional
-    void checkTransactionIdIsRequired() throws Exception {
-        int databaseSizeBeforeTest = transactionRepository.findAll().size();
-        // set the field null
-        transaction.setTransactionId(null);
-
-        // Create the Transaction, which fails.
-        TransactionDTO transactionDTO = transactionMapper.toDto(transaction);
-
-        restTransactionMockMvc
-            .perform(
-                post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(transactionDTO))
-            )
-            .andExpect(status().isBadRequest());
-
-        List<Transaction> transactionList = transactionRepository.findAll();
-        assertThat(transactionList).hasSize(databaseSizeBeforeTest);
     }
 
     @Test
@@ -248,7 +222,6 @@ class TransactionResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(transaction.getId().intValue())))
-            .andExpect(jsonPath("$.[*].transactionId").value(hasItem(DEFAULT_TRANSACTION_ID.intValue())))
             .andExpect(jsonPath("$.[*].transactionType").value(hasItem(DEFAULT_TRANSACTION_TYPE.toString())))
             .andExpect(jsonPath("$.[*].amount").value(hasItem(sameNumber(DEFAULT_AMOUNT))))
             .andExpect(jsonPath("$.[*].time").value(hasItem(sameInstant(DEFAULT_TIME))))
@@ -267,7 +240,6 @@ class TransactionResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(transaction.getId().intValue()))
-            .andExpect(jsonPath("$.transactionId").value(DEFAULT_TRANSACTION_ID.intValue()))
             .andExpect(jsonPath("$.transactionType").value(DEFAULT_TRANSACTION_TYPE.toString()))
             .andExpect(jsonPath("$.amount").value(sameNumber(DEFAULT_AMOUNT)))
             .andExpect(jsonPath("$.time").value(sameInstant(DEFAULT_TIME)))
@@ -293,12 +265,7 @@ class TransactionResourceIT {
         Transaction updatedTransaction = transactionRepository.findById(transaction.getId()).get();
         // Disconnect from session so that the updates on updatedTransaction are not directly saved in db
         em.detach(updatedTransaction);
-        updatedTransaction
-            .transactionId(UPDATED_TRANSACTION_ID)
-            .transactionType(UPDATED_TRANSACTION_TYPE)
-            .amount(UPDATED_AMOUNT)
-            .time(UPDATED_TIME)
-            .currency(UPDATED_CURRENCY);
+        updatedTransaction.transactionType(UPDATED_TRANSACTION_TYPE).amount(UPDATED_AMOUNT).time(UPDATED_TIME).currency(UPDATED_CURRENCY);
         TransactionDTO transactionDTO = transactionMapper.toDto(updatedTransaction);
 
         restTransactionMockMvc
@@ -313,7 +280,6 @@ class TransactionResourceIT {
         List<Transaction> transactionList = transactionRepository.findAll();
         assertThat(transactionList).hasSize(databaseSizeBeforeUpdate);
         Transaction testTransaction = transactionList.get(transactionList.size() - 1);
-        assertThat(testTransaction.getTransactionId()).isEqualTo(UPDATED_TRANSACTION_ID);
         assertThat(testTransaction.getTransactionType()).isEqualTo(UPDATED_TRANSACTION_TYPE);
         assertThat(testTransaction.getAmount()).isEqualTo(UPDATED_AMOUNT);
         assertThat(testTransaction.getTime()).isEqualTo(UPDATED_TIME);
@@ -397,7 +363,7 @@ class TransactionResourceIT {
         Transaction partialUpdatedTransaction = new Transaction();
         partialUpdatedTransaction.setId(transaction.getId());
 
-        partialUpdatedTransaction.transactionType(UPDATED_TRANSACTION_TYPE);
+        partialUpdatedTransaction.amount(UPDATED_AMOUNT);
 
         restTransactionMockMvc
             .perform(
@@ -411,9 +377,8 @@ class TransactionResourceIT {
         List<Transaction> transactionList = transactionRepository.findAll();
         assertThat(transactionList).hasSize(databaseSizeBeforeUpdate);
         Transaction testTransaction = transactionList.get(transactionList.size() - 1);
-        assertThat(testTransaction.getTransactionId()).isEqualTo(DEFAULT_TRANSACTION_ID);
-        assertThat(testTransaction.getTransactionType()).isEqualTo(UPDATED_TRANSACTION_TYPE);
-        assertThat(testTransaction.getAmount()).isEqualByComparingTo(DEFAULT_AMOUNT);
+        assertThat(testTransaction.getTransactionType()).isEqualTo(DEFAULT_TRANSACTION_TYPE);
+        assertThat(testTransaction.getAmount()).isEqualByComparingTo(UPDATED_AMOUNT);
         assertThat(testTransaction.getTime()).isEqualTo(DEFAULT_TIME);
         assertThat(testTransaction.getCurrency()).isEqualTo(DEFAULT_CURRENCY);
     }
@@ -431,7 +396,6 @@ class TransactionResourceIT {
         partialUpdatedTransaction.setId(transaction.getId());
 
         partialUpdatedTransaction
-            .transactionId(UPDATED_TRANSACTION_ID)
             .transactionType(UPDATED_TRANSACTION_TYPE)
             .amount(UPDATED_AMOUNT)
             .time(UPDATED_TIME)
@@ -449,7 +413,6 @@ class TransactionResourceIT {
         List<Transaction> transactionList = transactionRepository.findAll();
         assertThat(transactionList).hasSize(databaseSizeBeforeUpdate);
         Transaction testTransaction = transactionList.get(transactionList.size() - 1);
-        assertThat(testTransaction.getTransactionId()).isEqualTo(UPDATED_TRANSACTION_ID);
         assertThat(testTransaction.getTransactionType()).isEqualTo(UPDATED_TRANSACTION_TYPE);
         assertThat(testTransaction.getAmount()).isEqualByComparingTo(UPDATED_AMOUNT);
         assertThat(testTransaction.getTime()).isEqualTo(UPDATED_TIME);

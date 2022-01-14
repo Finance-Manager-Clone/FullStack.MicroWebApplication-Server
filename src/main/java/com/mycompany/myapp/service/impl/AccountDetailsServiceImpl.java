@@ -56,9 +56,9 @@ public class AccountDetailsServiceImpl implements AccountDetailsService {
 
     @Override
     @Transactional(readOnly = true)
-    public Page<AccountDetailsDTO> findAll(Pageable pageable) {
+    public Page<AccountDetailsDTO> findByUserIsCurrentUser(Pageable pageable) {
         log.debug("Request to get all AccountDetails");
-        return accountDetailsRepository.findAll(pageable).map(accountDetailsMapper::toDto);
+        return accountDetailsRepository.findByUserIsCurrentUser(pageable).map(accountDetailsMapper::toDto);
     }
 
     @Override

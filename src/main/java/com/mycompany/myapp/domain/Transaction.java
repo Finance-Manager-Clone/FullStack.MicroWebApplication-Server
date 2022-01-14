@@ -28,10 +28,6 @@ public class Transaction implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "transaction_id", nullable = false, unique = true)
-    private Long transactionId;
-
-    @NotNull
     @Enumerated(EnumType.STRING)
     @Column(name = "transaction_type", nullable = false)
     private TransactionType transactionType;
@@ -59,6 +55,9 @@ public class Transaction implements Serializable {
     @JsonIgnoreProperties(value = { "accountDetails" }, allowSetters = true)
     private ProductAccount to;
 
+    @ManyToOne
+    private User user;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public Long getId() {
@@ -72,19 +71,6 @@ public class Transaction implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getTransactionId() {
-        return this.transactionId;
-    }
-
-    public Transaction transactionId(Long transactionId) {
-        this.setTransactionId(transactionId);
-        return this;
-    }
-
-    public void setTransactionId(Long transactionId) {
-        this.transactionId = transactionId;
     }
 
     public TransactionType getTransactionType() {
@@ -178,6 +164,19 @@ public class Transaction implements Serializable {
         return this;
     }
 
+    public User getUser() {
+        return this.user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Transaction user(User user) {
+        this.setUser(user);
+        return this;
+    }
+
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override
@@ -202,7 +201,6 @@ public class Transaction implements Serializable {
     public String toString() {
         return "Transaction{" +
             "id=" + getId() +
-            ", transactionId=" + getTransactionId() +
             ", transactionType='" + getTransactionType() + "'" +
             ", amount=" + getAmount() +
             ", time='" + getTime() + "'" +

@@ -47,6 +47,15 @@
       "otherEntityRelationshipName": "accountDetails",
       "relationshipName": "accounts",
       "otherEntityField": "accountNumber"
+    },
+    {
+      "relationshipName": "user",
+      "otherEntityName": "user",
+      "relationshipType": "one-to-one",
+      "otherEntityField": "login",
+      "ownerSide": true,
+      "id": false,
+      "otherEntityRelationshipName": "accountDetails"
     }
   ],
   "entityTableName": "account_details",

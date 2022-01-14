@@ -35,6 +35,9 @@
             <column name="country" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
+            <column name="user_id" type="bigint">
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_account_details__user_id" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
     </changeSet>

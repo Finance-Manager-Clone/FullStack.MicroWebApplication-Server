@@ -13,15 +13,14 @@ import { overridePaginationStateWithQueryParams } from 'app/shared/util/entity-u
 import { useAppDispatch, useAppSelector } from 'app/config/store';
 
 export const Transaction = (props: RouteComponentProps<{ url: string }>) => {
- const formatter = new Intl.NumberFormat('en-US', {
+  const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
   
-    // hese options are needed to round to whole numbers if that's what you want.
+    // These options are needed to round to whole numbers if that's what you want.
     // minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
     // maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
   });
-
   const dispatch = useAppDispatch();
 
   const [paginationState, setPaginationState] = useState(
@@ -132,9 +131,6 @@ export const Transaction = (props: RouteComponentProps<{ url: string }>) => {
                   <th className="hand" onClick={sort('id')}>
                     <Translate contentKey="myApp.transaction.id">ID</Translate> <FontAwesomeIcon icon="sort" />
                   </th>
-                  <th className="hand" onClick={sort('transactionId')}>
-                    <Translate contentKey="myApp.transaction.transactionId">Transaction Id</Translate> <FontAwesomeIcon icon="sort" />
-                  </th>
                   <th className="hand" onClick={sort('transactionType')}>
                     <Translate contentKey="myApp.transaction.transactionType">Transaction Type</Translate> <FontAwesomeIcon icon="sort" />
                   </th>
@@ -156,6 +152,9 @@ export const Transaction = (props: RouteComponentProps<{ url: string }>) => {
                   <th>
                     <Translate contentKey="myApp.transaction.to">To</Translate> <FontAwesomeIcon icon="sort" />
                   </th>
+                  <th>
+                    <Translate contentKey="myApp.transaction.user">User</Translate> <FontAwesomeIcon icon="sort" />
+                  </th>
                   <th />
                 </tr>
               </thead>
@@ -167,7 +166,6 @@ export const Transaction = (props: RouteComponentProps<{ url: string }>) => {
                         {transaction.id}
                       </Button>
                     </td>
-                    <td>{transaction.transactionId}</td>
                     <td>
                       <Translate contentKey={`myApp.TransactionType.${transaction.transactionType}`} />
                     </td>
@@ -187,6 +185,7 @@ export const Transaction = (props: RouteComponentProps<{ url: string }>) => {
                       {transaction.from ? <Link to={`product-account/${transaction.from.id}`}>{transaction.from.accountNumber}</Link> : ''}
                     </td>
                     <td>{transaction.to ? <Link to={`product-account/${transaction.to.id}`}>{transaction.to.accountNumber}</Link> : ''}</td>
+                    <td>{transaction.user ? transaction.user.login : ''}</td>
                     <td className="text-end">
                       <div className="btn-group flex-btn-group-container">
                         <Button tag={Link} to={`${match.url}/${transaction.id}`} color="info" size="sm" data-cy="entityDetailsButton">

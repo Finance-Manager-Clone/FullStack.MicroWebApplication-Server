@@ -31,7 +31,7 @@ public interface TransactionService {
      * @param pageable the pagination information.
      * @return the list of entities.
      */
-    Page<TransactionDTO> findAll(Pageable pageable);
+    Page<TransactionDTO> findByUserIsCurrentUser(Pageable pageable);
 
     /**
      * Get the "id" transaction.
