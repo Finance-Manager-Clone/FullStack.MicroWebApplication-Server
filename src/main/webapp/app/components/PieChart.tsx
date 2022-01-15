@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-
+import axios from 'axios';
 
 import { Pie } from 'react-chartjs-2';
 
@@ -8,16 +8,16 @@ import { Pie } from 'react-chartjs-2';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 
-
-const PieChart = () => {
-  const [chart, setChart] = useState({});
-  var baseUrl = "http://localhost:9000/api/transactions?page=0&size=20";
+const PieChart = () => { 
+  // Fetch method doesn't work will use axios but need to figure out how to get jwt token
+ // const [chart, setChart] = useState({});
+ // var baseUrl = "http://localhost:8080/api/transactions?page=0&size=20";
   // var proxyUrl = "https://cors-anywhere.herokuapp.com/";
   // var apiKey = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
 
 
 
-  useEffect(() => {
+  /* useEffect(() => {
     const fetchCoins = async () => {
       await fetch(`${baseUrl}`, {
         method: 'GET',
@@ -44,10 +44,12 @@ const PieChart = () => {
   }, [baseUrl])
 
   console.log("chart", chart);
+  */
+
   var data = {
     labels: ['Utilities', 'Food', 'Gas', 'Entertainment', 'Insurance', 'Internet','ZipCode'], // chart?.category?.categoryName?.map(x => x.categoryName),
     datasets: [{
-      label: '# of Votes', // `${chart?.category?.length} Coins Available`,
+      label: '# of Categories', // `${chart?.category?.length} Coins Available`,
       data: [12, 19, 3, 5, 2, 3,7], // chart?.amount?.map(x => x.amount),
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
