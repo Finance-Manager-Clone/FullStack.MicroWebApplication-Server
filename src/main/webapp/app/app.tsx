@@ -17,7 +17,7 @@ import { hasAnyAuthority } from 'app/shared/auth/private-route';
 import ErrorBoundary from 'app/shared/error/error-boundary';
 import { AUTHORITIES } from 'app/config/constants';
 import AppRoutes from 'app/routes';
-import ApiCall from './components/ApiCall';
+
 
 const baseHref = document.querySelector('base').getAttribute('href').replace(/\/$/, '');
 
@@ -57,7 +57,7 @@ export const App = () => {
               <AppRoutes />
             </ErrorBoundary>
           </Card>
-         <ApiCall/>
+      
           <Footer />
         </div>
       </div>

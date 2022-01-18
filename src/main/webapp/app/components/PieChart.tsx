@@ -63,7 +63,8 @@ const [transaction, setTransaction] = useState([]);
         'rgba(255, 159, 64, 0.2)',
         'rgba(200, 159, 64, 0.2)',
         'rgba(190, 150, 64, 0.2)',
-        'rgba(160, 140, 54, 0.2)'
+        'rgba(160, 140, 54, 0.2)',
+        'rgba(140, 140, 84, 0.2)'
       ],
       borderColor: [
         'rgba(255, 99, 132, 1)',
@@ -74,7 +75,8 @@ const [transaction, setTransaction] = useState([]);
         'rgba(255, 159, 64, 1)',
         'rgba(200, 159, 64, 1)',
         'rgba(190, 150, 64, 1)',
-        'rgba(160, 140, 54, 1)'
+        'rgba(160, 140, 54, 1)',
+        'rgba(140, 140, 84, 1)'
       ],
       borderWidth: 1
     }]
