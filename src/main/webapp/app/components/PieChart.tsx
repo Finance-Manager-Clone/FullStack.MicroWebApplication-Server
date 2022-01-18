@@ -7,50 +7,29 @@ import { Pie } from 'react-chartjs-2';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
+const baseURL = "http://localhost:9000/api/transactions?page=0&size=20";
+
+const JWT = "Bearer "+ sessionStorage.getItem('jhi-authenticationToken');
 
 const PieChart = () => { 
-  // Fetch method doesn't work will use axios but need to figure out how to get jwt token
- // const [chart, setChart] = useState({});
- // var baseUrl = "http://localhost:8080/api/transactions?page=0&size=20";
-  // var proxyUrl = "https://cors-anywhere.herokuapp.com/";
-  // var apiKey = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+const [transaction, setTransaction] = useState([]);
+  
+  useEffect(() => {
+    axios.get(baseURL, { 'headers': { 'Authorization': JWT } }).then((response) => {
+      
+      setTransaction(response.data);
+      console.log(response.data);
+    });
+  }, []);
 
+  if (!transaction) return null;
 
-
-  /* useEffect(() => {
-    const fetchCoins = async () => {
-      await fetch(`${baseUrl}`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-         
-        'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTY0MjMzMDUxNn0.Nm2MYlzXLtdI6HsmzgkTNqZopfR8jlDJ0Ft1169a5ZqY0C39LjHNO6vaS-auDYwcucSaMAq4JGuZjFMstiQFNQ'
-          
-         
-        }
-      })
-        .then((response) => {
-          if (response.ok) {
-            response.json().then((json) => {
-              console.log(json.data);
-              setChart(json.data)
-            });
-          }
-        }).catch((error) => {
-          console.log(error);
-        });
-    };
-    fetchCoins()
-  }, [baseUrl])
-
-  console.log("chart", chart);
-  */
 
   var data = {
-    labels: ['Utilities', 'Food', 'Gas', 'Entertainment', 'Insurance', 'Internet','ZipCode'], // chart?.category?.categoryName?.map(x => x.categoryName),
+    labels:  transaction.map(category => category.category.categoryName),
     datasets: [{
-      label: '# of Categories', // `${chart?.category?.length} Coins Available`,
-      data: [12, 19, 3, 5, 2, 3,7], // chart?.amount?.map(x => x.amount),
+      label: '# of Categories', 
+      data: transaction.map(amt => amt.amount), 
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
         'rgba(54, 162, 235, 0.2)',
