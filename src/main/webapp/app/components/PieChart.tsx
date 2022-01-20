@@ -7,8 +7,8 @@ import { Pie } from 'react-chartjs-2';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-// const baseURL = "http://localhost:9000/api/transactions?page=0&size=20";
-const baseURL = "https://zip-code-bank.herokuapp.com/api/transactions?page=0&size=20";
+ const baseURL = "http://localhost:9000/api/transactions?page=0&size=20";
+// const baseURL = "https://zip-code-bank.herokuapp.com/api/transactions?page=0&size=20";
 
 const JWT = "Bearer "+ sessionStorage.getItem('jhi-authenticationToken');
 
