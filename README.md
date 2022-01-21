@@ -12,11 +12,12 @@
 
 ## Developmental Notes
 ### Minimum Tech Stack
-* **Wireframe** - Mockflow
-* **Frontend** - Angular / React
+* **Wireframe** - Balsamiq
+* **Frontend** - React
 * **Business Logic** - Java
-* **Data Layer** - MySQL
-* **Cloud** - Heroku/AWS/Google
+* **Data Layer** - PostgreSQL
+* **Cloud** - Heroku
+* **Libraries** - Chart.js
 
 
 ### Money Management Application
@@ -35,3 +36,7 @@
 ![Transaction History-1](https://user-images.githubusercontent.com/92059008/148302925-256e2657-592d-4c95-aa2b-c04eb5fbbce8.jpg)
 
 # Images of Webpage
+![Transaction Page Layout](https://i.gyazo.com/5025e569b5b93efe2d7f1625ddfd4c02.png)
+![Account Listing](https://i.gyazo.com/3a6053c8d84f1e6cafdec35a1631839a.png)
+![Categories](https://i.gyazo.com/112057d5d25ea3184c5823f72ec0741f.png)
+
