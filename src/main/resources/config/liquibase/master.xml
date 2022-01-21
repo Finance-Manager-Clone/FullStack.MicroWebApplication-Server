@@ -14,8 +14,7 @@
     <property name="datetimeType" value="datetime(6)" dbms="mysql, mariadb"/>
     <property name="datetimeType" value="datetime" dbms="oracle, mssql, postgresql, h2"/>
     
-    <include file="classpath:config/liquibase/changelog/20220113000403_changelog.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20220113032132_changelog.xml" relativeToChangelogFile="false"/>
+    
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20220111223227_added_entity_AccountDetails.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20220111223228_added_entity_Transaction.xml" relativeToChangelogFile="false"/>
@@ -28,7 +27,10 @@
     <include file="config/liquibase/changelog/20220111223227_added_entity_constraints_AccountDetails.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
-    
+    <include file="classpath:config/liquibase/changelog/20220113000403_changelog.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20220113032132_changelog.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20220116201814_changelog.xml" relativeToChangelogFile="false"/>
+
     
 
 </databaseChangeLog>

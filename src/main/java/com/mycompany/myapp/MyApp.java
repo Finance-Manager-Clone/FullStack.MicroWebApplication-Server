@@ -57,7 +57,7 @@ public class MyApp {
             );
         }
     }
-//testing commits
+
     /**
      * Main method, used to run the application.
      *
