@@ -7,8 +7,8 @@
 * [**Jacob-Stagg**](https://github.com/Jacob-Stagg)
 
 # Zip Banking App - Server
-* **Objective** - to create an implementation of a small web service banking app that can handel multiple accounts
-* **Purpose** - to demonstrate the construction of a full-stacked web-application
+* **Objective** - creating a user accounts that allows money management, transfer between accounts, and display money usage regarding categories
+* **Purpose** - allow users/clients to manage money and track spending habits
 
 ## Developmental Notes
 ### Minimum Tech Stack
