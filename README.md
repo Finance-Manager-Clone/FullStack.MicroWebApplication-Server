@@ -4,7 +4,7 @@
 ## Creaters and Editors
 * [**Roggam**](https://github.com/Roggam)
 * [**nganttong**](https://github.com/nganttong)
-* [**Jacob-Stagg**](https://github.com/Jacob-Stagg?tab=repositories)
+* [**Jacob-Stagg**](https://github.com/Jacob-Stagg)
 
 # Zip Banking App - Server
 * **Objective** - to create an implementation of a small web service banking app that can handel multiple accounts
