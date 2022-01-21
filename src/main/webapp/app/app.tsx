@@ -17,6 +17,7 @@ import { hasAnyAuthority } from 'app/shared/auth/private-route';
 import ErrorBoundary from 'app/shared/error/error-boundary';
 import { AUTHORITIES } from 'app/config/constants';
 import AppRoutes from 'app/routes';
+import LoginModal from './modules/login/login-modal';
 
 
 const baseHref = document.querySelector('base').getAttribute('href').replace(/\/$/, '');
@@ -57,7 +58,7 @@ export const App = () => {
               <AppRoutes />
             </ErrorBoundary>
           </Card>
-      
+       
           <Footer />
         </div>
       </div>

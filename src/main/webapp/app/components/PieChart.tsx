@@ -7,7 +7,7 @@ import { Pie } from 'react-chartjs-2';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
- const baseURL = "http://localhost:9000/api/transactions?page=0&size=20";
+const  baseURL = "http://localhost:9000/api/transactions?page=0&size=20";
 // const baseURL = "https://zip-code-bank.herokuapp.com/api/transactions?page=0&size=20";
 
 const JWT = "Bearer "+ sessionStorage.getItem('jhi-authenticationToken');
@@ -51,12 +51,12 @@ const [transaction, setTransaction] = useState([]);
     console.log("-------------")
 
   var data = {
-    labels:  categoriesArrayObj.map(x => x.key), // transaction.map(cat => cat.category.categoryName),
+    labels:  categoriesArrayObj.map(x => x.key), // transaction.map(cat => cat.category.categoryName), //
     datasets: [{
       label: '# of Categories', 
       data: categoriesArrayObj.map(x => x.value) , // transaction.map(amt => amt.amount), 
       backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
+        'rgba(255, 99, 132, 0.5)',
         'rgba(54, 162, 235, 0.2)',
         'rgba(255, 206, 86, 0.2)',
         'rgba(75, 192, 192, 0.2)',
@@ -87,11 +87,18 @@ const [transaction, setTransaction] = useState([]);
     maintainAspectRatio: false,
     scales: {
     },
-    legend: {
-      labels: {
-        fontSize: 25,
-      },
-    },
+    plugins: {
+      legend: {
+          labels: {
+              // This more specific font property overrides the global property
+              font: {
+                  size: 20,
+                  
+              },
+              color: "white"
+          }
+      }
+  }
   }
 
   return (
